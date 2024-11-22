@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "author": "Leonardo Ferreyra",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 19.2, "left": -4.76, "attrs": {} },
+    { "type": "wokwi-hx711", "id": "total_food_scale", "top": 194.6, "left": 425, "attrs": {} },
+    { "type": "wokwi-hx711", "id": "tray_food_scale", "top": 444.2, "left": 415.4, "attrs": {} },
+    { "type": "wokwi-servo", "id": "food_servo", "top": 17.2, "left": 403.2, "attrs": {} },
+    { "type": "wokwi-servo", "id": "water_servo", "top": -30.8, "left": -403.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -156.8,
+      "left": 370.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "total_water_sensor",
+      "top": 193.5,
+      "left": -407.3,
+      "attrs": { "distance": "345" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "tray_water_sensor",
+      "top": 423.9,
+      "left": -340.1,
+      "attrs": { "distance": "310" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "start_fill_button",
+      "top": 150.2,
+      "left": 172.8,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "end_fill_button",
+      "top": 198.2,
+      "left": -115.2,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "dispense_100g_button",
+      "top": -32.2,
+      "left": 259.2,
+      "attrs": { "color": "black" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "dispense_50ml_button",
+      "top": -51.4,
+      "left": -345.6,
+      "attrs": { "color": "yellow" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND", "total_food_scale:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "total_food_scale:VCC", "red", [ "v0" ] ],
+    [ "esp:32", "total_food_scale:DT", "green", [ "v0" ] ],
+    [ "esp:33", "total_food_scale:SCK", "blue", [ "v0" ] ],
+    [ "esp:GND", "tray_food_scale:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "tray_food_scale:VCC", "red", [ "v0" ] ],
+    [ "esp:15", "tray_food_scale:DT", "green", [ "v0" ] ],
+    [ "esp:23", "tray_food_scale:SCK", "blue", [ "v0" ] ],
+    [ "esp:GND", "food_servo:GND", "black", [ "v0" ] ],
+    [ "esp:5V", "food_servo:V+", "red", [ "v0" ] ],
+    [ "esp:13", "food_servo:PWM", "blue", [ "v0" ] ],
+    [ "esp:GND", "water_servo:GND", "black", [ "v0" ] ],
+    [ "esp:5V", "water_servo:V+", "red", [ "v0" ] ],
+    [ "esp:12", "water_servo:PWM", "blue", [ "v0" ] ],
+    [ "esp:GND", "lcd:GND", "black", [ "v0" ] ],
+    [ "esp:5V", "lcd:VCC", "red", [ "v0" ] ],
+    [ "esp:21", "lcd:SDA", "blue", [ "v0" ] ],
+    [ "esp:22", "lcd:SCL", "green", [ "v0" ] ],
+    [ "esp:5V", "total_water_sensor:VCC", "red", [ "v0" ] ],
+    [ "esp:GND", "total_water_sensor:GND", "black", [ "v0" ] ],
+    [ "esp:25", "total_water_sensor:TRIG", "yellow", [ "v0" ] ],
+    [ "esp:26", "total_water_sensor:ECHO", "orange", [ "v0" ] ],
+    [ "esp:5V", "tray_water_sensor:VCC", "red", [ "v0" ] ],
+    [ "esp:GND", "tray_water_sensor:GND", "black", [ "v0" ] ],
+    [ "esp:27", "tray_water_sensor:TRIG", "yellow", [ "v0" ] ],
+    [ "esp:14", "tray_water_sensor:ECHO", "orange", [ "v0" ] ],
+    [ "esp:16", "start_fill_button:1.l", "green", [ "v0" ] ],
+    [ "esp:17", "end_fill_button:1.l", "green", [ "v0" ] ],
+    [ "esp:18", "dispense_100g_button:1.l", "green", [ "v0" ] ],
+    [ "esp:19", "dispense_50ml_button:1.l", "green", [ "v0" ] ],
+    [ "esp:GND", "start_fill_button:2.r", "black", [ "v0" ] ],
+    [ "esp:GND", "end_fill_button:2.r", "black", [ "v0" ] ],
+    [ "esp:GND", "dispense_100g_button:2.r", "black", [ "v0" ] ],
+    [ "esp:GND", "dispense_50ml_button:2.r", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
